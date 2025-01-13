@@ -1,22 +1,14 @@
-import { OpenAPIHono } from '@hono/zod-openapi'
-import { notFound, onError, serveEmojiFavicon } from 'stoker/middlewares'
-import logger from '@/lib/logger'
+import createApp from "@/lib/create-app"
+import configureOpenAPI from "@/lib/configure-openapi";
+import index from '@/routes/index.routes'
 
-const app = new OpenAPIHono({
-})
+const app = createApp();
+configureOpenAPI(app);
 
-app.use(logger())
-app.use(serveEmojiFavicon('🎉'))
+const routes = [index]
 
-app.notFound(notFound)
-app.onError(onError)
-
-app.get('/', (c) => {
-  return c.text('Hello Hono!')
-})
-
-app.get('/error', (c) => {
-  throw new Error("Error aagyi")
-})
+routes.forEach(route => app.route('/', route))
 
 export default app
+
+
