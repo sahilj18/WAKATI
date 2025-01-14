@@ -18,9 +18,7 @@ export const analyse = createRoute({
         200: {
             content: {
                 'application/json': {
-                    schema: z.object({
-                        message: z.string()
-                    }),
+                    schema: z.object({}),
                 },
             },
             description: 'Hello from Wakati! 👋',
