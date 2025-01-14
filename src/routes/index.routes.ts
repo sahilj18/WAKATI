@@ -13,7 +13,7 @@ const router = createRouter().openapi(createRoute({
           }),
         },
       },
-      description: 'Hello from Wakati!',
+      description: 'Hello from Wakati! 👋',
     },
   },
 }), (c) => {
